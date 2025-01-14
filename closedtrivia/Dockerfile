@@ -1,6 +1,11 @@
 FROM openjdk:23-jdk
 
-COPY ./target/closedtrivia-0.0.1-SNAPSHOT.jar /app.jar
+RUN microdnf install -y maven
+WORKDIR /app
+COPY . .
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+RUN mvn install 
+RUN mvn clean package 
+
+ENTRYPOINT ["java", "-jar", "./target/closedtrivia-0.0.1-SNAPSHOT.jar"]
 
