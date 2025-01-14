@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  trivia-backend:
+    build: ./closedtrivia
+    container_name: trivia-backend 
+    ports:
+      - "8080:8080" 
+  trivia-frontend:
+    build: ./frontend-closedtrivia
+    container_name: trivia-frontend
+    ports:
+      - "3000:3000" 
+
+
